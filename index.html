@@ -4,19 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TypeCode</title>
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: #001f3d; /* Dark blue background */
-            font-family: Arial, sans-serif;
+            background-color: rgb(11, 11, 11); /* Black and grey background */
+            font-family: 'Frank Ruhl Libre', serif;
             color: white;
             text-align: center;
             margin: 0;
             padding: 0;
+            height: 100vh; /* Full viewport height */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .title {
+            font-size: 48px; /* Large font size for the title */
+            font-weight: 700; /* Bold font weight */
+            margin-top: 20px;
+        }
+        .images {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px; /* Space between images */
+            margin-top: 20px; /* Space above buttons */
+            max-width: 80%; /* Limit width to fit the screen */
+        }
+        .images img {
+            width: 400px; /* Both images will have the same width */
+            height: 400px; /* Both images will have the same height */
+            object-fit: cover; /* Ensures the images fill their container */
+            border-radius: 25px; /* Smooth rounded corners */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Adds shadow for better visibility */
         }
         .buttons {
-            margin-top: 50px;
+            margin-top: 20px;
         }
-        a.button {
+        .buttons a {
+            position: relative;
             background-color: #004080; /* Blue button */
             color: white;
             text-decoration: none;
@@ -27,9 +54,30 @@
             cursor: pointer;
             border-radius: 5px;
             display: inline-block;
+            overflow: hidden;
         }
-        a.button:hover {
+        .buttons a:hover {
             background-color: #0059b3; /* Slightly lighter blue on hover */
+        }
+        .buttons a::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .buttons a:hover::after {
+            opacity: 1;
+        }
+        .buttons a[href*="bingos"]::after {
+            background-image: url('./Bingo.png');
+        }
+        .buttons a[href*="notepad"]::after {
+            background-image: url('./Notepad.png');
         }
         .footer {
             position: absolute;
@@ -37,12 +85,13 @@
             width: 100%;
         }
         .footer p {
-            font-size: 16px;
+            font-size: 24px; /* Larger footer text */
         }
         .footer a {
             color: #1e90ff; /* Blue links */
             text-decoration: none;
             margin-left: 10px;
+            font-size: 24px; /* Matches larger footer text */
         }
         .footer a:hover {
             text-decoration: underline;
@@ -50,9 +99,20 @@
     </style>
 </head>
 <body>
+    <div class="title">TypeCode TM.</div>
+
     <div class="buttons">
-        <a href="https://bingos.vercel.app" class="button" target="_blank">Bingos</a>
-        <a href="https://active-notepad.vercel.app" class="button" target="_blank">Notepad</a>
+        <a href="https://bingos.vercel.app" target="_blank">Bingos</a>
+        <a href="https://active-notepad.vercel.app" target="_blank">Notepad</a>
+    </div>
+
+    <div class="images">
+        <div class="bingo-image">
+            <img src="./Bingo.png" alt="Bingo" />
+        </div>
+        <div class="notepad-image">
+            <img src="./Notepad.png" alt="Notepad" />
+        </div>
     </div>
 
     <div class="footer">
@@ -63,4 +123,5 @@
     </div>
 </body>
 </html>
+
 
